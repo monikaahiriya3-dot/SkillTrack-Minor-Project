@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap - SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .roadmap-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 24px;
+            color: #f8fafc;
+        }
+
+        .roadmap-card {
+            background: #171b35;
+            border: 1px solid #343b61;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .roadmap-card h2 {
+            color: #67e8f9;
+        }
+
+        .roadmap-step {
+            padding: 14px;
+            margin: 10px 0;
+            background: #222744;
+            border-radius: 8px;
+        }
+
+        .roadmap-link {
+            display: inline-block;
+            padding: 12px 18px;
+            margin: 8px 8px 8px 0;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <main class="roadmap-container">
+        <h1>Your Learning Roadmap</h1>
+        <p>Career Goal: <strong>{{ role.name }}</strong></p>
+        <p>Follow these steps to improve your skills.</p>
+
+        <section class="roadmap-card">
+            <h2>Step 1: Continue Learning</h2>
+            {% for skill in learning %}
+                <div class="roadmap-step">
+                    <strong>{{ loop.index }}. {{ skill.name }}</strong>
+                    <p>Revise the basics and practise a small exercise or project.</p>
+                </div>
+            {% else %}
+                <p>You have not marked any skills as Learning yet.</p>
+            {% endfor %}
+        </section>
+
+        <section class="roadmap-card">
+            <h2>Step 2: Learn Missing Skills</h2>
+            {% for skill in missing %}
+                <div class="roadmap-step">
+                    <strong>{{ loop.index }}. {{ skill.name }}</strong>
+                    <p>
+                        Learn the fundamentals, practise examples,
+                        and build a small project using this skill.
+                    </p>
+                </div>
+            {% else %}
+                <p>No missing skills found in your current skill list.</p>
+            {% endfor %}
+        </section>
+
+        <section class="roadmap-card">
+            <h2>Step 3: Build a Project</h2>
+            <div class="roadmap-step">
+                Choose a small project related to your career goal.
+                Apply your known skills and the skills you have learned.
+            </div>
+        </section>
+
+        <a class="roadmap-link" href="{{ url_for('skill_gap') }}">
+            Back to Skill Gap
+        </a>
+
+        <a class="roadmap-link" href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+    </main>
+</body>
+</html>

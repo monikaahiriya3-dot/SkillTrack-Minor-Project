@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Career | SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">✦ SkillTrack</a>
+        <a href="/dashboard" class="secondary-btn">Dashboard</a>
+    </nav>
+
+    <main class="career-section">
+        <p class="tagline">STEP 1 · CHOOSE YOUR DIRECTION</p>
+        <h2>What do you want to become?</h2>
+        <p>Choose a target role. We'll show you the skills it requires.</p>
+
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        <p class="notice">{{ message }}</p>
+        {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="career-grid">
+                {% for role in roles %}
+                <label class="role-option">
+                    <input type="radio" name="role_id" value="{{ role.id }}" required>
+                    <strong>{{ role.title }}</strong>
+                    <span>{{ role.description }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            <button class="primary-btn full-btn" type="submit">View Required Skills →</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Gap Analysis - SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .gap-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 24px;
+            color: #f8fafc;
+        }
+
+        .gap-panel {
+            background: #171b35;
+            border: 1px solid #343b61;
+            border-radius: 14px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .gap-progress {
+            height: 14px;
+            background: #303650;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .gap-progress-fill {
+            height: 100%;
+            background: #06b6d4;
+            width: 0;
+        }
+
+        .gap-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gap-list li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #222744;
+            border-radius: 8px;
+        }
+
+        .gap-link {
+            display: inline-block;
+            margin: 8px 8px 8px 0;
+            padding: 12px 18px;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .gap-number {
+            color: #22d3ee;
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="gap-container">
+
+        <h1>Skill Gap Analysis</h1>
+        <p>Selected Career:
+            <strong>{{ role.name }}</strong>
+        </p>
+
+        <section class="gap-panel">
+            <h2>Your Skill Progress</h2>
+
+            <div class="gap-number">{{ readiness }}%</div>
+
+            <p>Estimated progress based on your selected skills.</p>
+
+            <div class="gap-progress">
+                <div class="gap-progress-fill" id="progressFill">
+                </div>
+            </div>
+
+            <p>Total Required Skills: {{ total }}</p>
+        </section>
+
+        <section class="gap-panel">
+            <h2>Skills You Already Know ({{ known|length }})</h2>
+            <ul class="gap-list">
+                {% for skill in known %}
+                <li>✓ {{ skill.name }}</li>
+                {% else %}
+                <li>No skills marked as known yet.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="gap-panel">
+            <h2>Skills You Are Learning ({{ learning|length }})</h2>
+            <ul class="gap-list">
+                {% for skill in learning %}
+                <li>◷ {{ skill.name }}</li>
+                {% else %}
+                <li>No skills marked as learning yet.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="gap-panel">
+            <h2>Recommended Skills to Learn ({{ missing|length }})</h2>
+            <ul class="gap-list">
+                {% for skill in missing %}
+                <li>→ {{ skill.name }}</li>
+                {% else %}
+                <li>Great! No missing skills in this list.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <a class="gap-link" href="{{ url_for('current_skills') }}">
+            Update My Skills
+        </a>
+
+        <a class="gap-link" href="{{ url_for('dashboard') }}">
+            Go to Dashboard
+        </a>
+        <a class="gap-link" href="{{ url_for('roadmap') }}">
+            View My Learning Roadmap
+        </a>
+
+    </main>
+
+    <script>
+        const progress = Number("{{ readiness }}");
+        document.getElementById("progressFill").style.width =
+            Math.max(0, Math.min(100, progress)) + "%";
+    </script>
+</body>
+
+</html>

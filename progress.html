@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracking - SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .progress-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 24px;
+            color: #f8fafc;
+        }
+
+        .progress-card {
+            background: #171b35;
+            border: 1px solid #343b61;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 18px 0;
+        }
+
+        .progress-track {
+            height: 14px;
+            background: #303650;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #06b6d4;
+        }
+
+        .progress-skill {
+            padding: 12px;
+            margin: 10px 0;
+            background: #222744;
+            border-radius: 8px;
+        }
+
+        .progress-btn {
+            padding: 12px 18px;
+            border: 0;
+            border-radius: 8px;
+            background: #6366f1;
+            color: white;
+            cursor: pointer;
+        }
+
+        .progress-link {
+            color: #67e8f9;
+            margin-right: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="progress-container">
+        <h1>My Learning Progress</h1>
+        <p>Career Goal: <strong>{{ role.name }}</strong></p>
+
+        <section class="progress-card">
+            <h2>{{ percentage }}% Skills Completed</h2>
+            <div class="progress-track">
+                <div class="progress-fill" style="width: {{ percentage }}%;">
+                </div>
+            </div>
+            <p>{{ completed|length }} out of {{ total }} skills completed</p>
+        </section>
+
+        <form method="POST">
+            <section class="progress-card">
+                <h2>Update Your Skills</h2>
+                <p>Completed skills ko tick karo. Save karne par unka status Known ho jayega.</p>
+
+                {% for skill in skills %}
+                <label class="progress-skill" style="display:block;">
+                    <input type="checkbox" name="completed" value="{{ skill.id }}" {% if skill.status=='known'
+                        %}checked{% endif %}>
+                    {{ skill.name }}
+                    {% if skill.status == 'known' %}
+                    — Completed
+                    {% elif skill.status == 'learning' %}
+                    — Learning
+                    {% else %}
+                    — Not started
+                    {% endif %}
+                </label>
+                {% else %}
+                <p>No skills found. Please select a career first.</p>
+                {% endfor %}
+
+                <button class="progress-btn" type="submit">
+                    Save My Progress
+                </button>
+            </section>
+        </form>
+
+        <a class="progress-link" href="{{ url_for('roadmap') }}">Learning Roadmap</a>
+        <a class="progress-link" href="{{ url_for('skill_gap') }}">Skill Gap Analysis</a>
+        <a class="progress-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Skills | SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">✦ SkillTrack</a>
+        <a href="/career" class="secondary-btn">Change Career</a>
+    </nav>
+
+    <main class="dashboard-welcome">
+        <p class="tagline">YOUR CAREER SKILL MAP</p>
+        <h1>{{ role.title }}</h1>
+        <p>{{ role.description }}</p>
+
+        <div class="skill-list">
+            {% for skill in skills %}
+            <div class="skill-row">
+                <span>{{ skill.skill_name }}</span>
+                <span class="importance">{{ skill.importance }}</span>
+            </div>
+            {% else %}
+            <p>No skills have been added for this role yet.</p>
+            {% endfor %}
+        </div>
+
+        <a class="primary-btn next-btn" href="/current-skills">
+            Mark My Current Skills →
+        </a>
+    </main>
+</body>
+
+</html>
