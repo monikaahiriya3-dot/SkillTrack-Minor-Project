@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">✦ SkillTrack</a>
+        <a href="/" class="secondary-btn">Home</a>
+    </nav>
+
+    <main class="auth-wrapper">
+        <form class="auth-card" method="POST">
+            <p class="tagline">WELCOME BACK</p>
+            <h1>Login to SkillTrack</h1>
+            <p class="auth-description">Continue your career journey.</p>
+
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <p class="notice">{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button class="primary-btn full-btn" type="submit">Login →</button>
+
+            <p class="auth-footer">New to SkillTrack? <a href="/register">Create an account</a></p>
+        </form>
+    </main>
+</body>
+</html>
