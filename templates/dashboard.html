@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+
+    <nav class="main-nav">
+        <a href="{{ url_for('home') }}">SkillTrack</a>
+
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('career') }}">Career Goal</a>
+            <a href="{{ url_for('progress') }}">Progress</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <nav class="navbar">
+        <a href="/" class="logo">✦ SkillTrack</a>
+        <a href="/logout" class="secondary-btn">Logout</a>
+    </nav>
+
+    <section class="dashboard-features">
+        <h2>Your Career Development</h2>
+        <p>Choose a feature to continue your learning journey.</p>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <h3>Career Goal</h3>
+                <p>Select the job role you want to prepare for.</p>
+                <a href="{{ url_for('career') }}">Choose Career →</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>Required Skills</h3>
+                <p>Explore the skills required for your selected role.</p>
+                <a href="{{ url_for('required_skills') }}">View Skills →</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>Current Skills</h3>
+                <p>Update the skills you know or are learning.</p>
+                <a href="{{ url_for('current_skills') }}">Update Skills →</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>Skill Gap Analysis</h3>
+                <p>Identify skills you still need to learn.</p>
+                <a href="{{ url_for('skill_gap') }}">Analyse Gaps →</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>Learning Roadmap</h3>
+                <p>View your suggested learning sequence.</p>
+                <a href="{{ url_for('roadmap') }}">View Roadmap →</a>
+            </div>
+
+            <div class="feature-card">
+                <h3>Progress Tracking</h3>
+                <p>Mark completed skills and monitor your progress.</p>
+                <a href="{{ url_for('progress') }}">Track Progress →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <main class="dashboard-welcome">
+        <p class="tagline">YOUR PERSONAL SPACE</p>
+        <h1>Welcome, {{ name }}! 👋</h1>
+        <p>Your SkillTrack account is working. Next, let's set up your career goal.</p>
+
+
+        <div class="feature-grid">
+            <article class="feature">
+                <span>◎</span>
+                <h3>Career Goal</h3>
+                <p>Choose the role you want to work toward.</p>
+            </article>
+            <article class="feature">
+                <span>⌁</span>
+                <h3>Skill Gap</h3>
+                <p>Discover which skills you need to learn.</p>
+            </article>
+            <article class="feature">
+                <span>↗</span>
+                <h3>Learning Roadmap</h3>
+                <p>Build your personalized learning plan.</p>
+            </article>
+        </div>
+        <p class="coming-soon">Career goal selection will be our next development step.</p>
+    </main>
+</body>
+
+</html>
