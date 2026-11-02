@@ -1,0 +1,113 @@
+<!DOCTYPE html>  <html lang="en">  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>SkillTrack | Build Your Future</title>  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  
+</head>  <body>  <nav class="navbar">  
+    <a href="/" class="logo">✦ SkillTrack</a>  
+    <div class="nav-links">  
+        <a href="#features">Features</a>  
+        <a href="#about">About</a>  
+        <a href="#career">Career Goals</a>  
+        <a href="#career" class="login-btn">Get Started</a>  
+    </div>  
+</nav>  
+
+
+<nav class="main-nav">  
+    <a href="{{ url_for('home') }}">SkillTrack</a>  
+
+    <div class="nav-links">  
+        <a href="{{ url_for('login') }}">Login</a>  
+        <a href="{{ url_for('register') }}">Register</a>  
+    </div>  
+</nav>  
+
+
+
+<main class="hero">  
+    <div class="hero-content">  
+        <p class="tagline">YOUR SKILLS. YOUR FUTURE.</p>  
+
+        <h1>  
+            Build Skills.<br>  
+            <span>Track Progress.</span><br>  
+            Reach Your Career Goal.  
+        </h1>  
+
+        <p class="description">  
+            Discover the skills your dream career requires,  
+            identify your skill gaps, and follow a personalized  
+            learning roadmap to become job-ready.  
+        </p>  
+
+        <div class="hero-buttons">  
+            <a href="#career" class="primary-btn">Explore Your Future →</a>  
+            <a href="#features" class="secondary-btn">Learn More</a>  
+        </div>  
+
+        <div class="stats">  
+            <div><strong>Career</strong><small>Goal Planning</small></div>  
+            <div><strong>Skill Gap</strong><small>Analysis</small></div>  
+            <div><strong>Learning</strong><small>Roadmap</small></div>  
+        </div>  
+    </div>  
+
+    <div class="hero-card">  
+        <div class="card-icon">✦</div>  
+        <p class="card-label">YOUR CAREER JOURNEY</p>  
+        <h2>Plan → Learn → Grow</h2>  
+        <div class="progress-item">  
+            <div><span>Skills Development</span><span>75%</span></div>  
+            <div class="progress"><span></span></div>  
+        </div>  
+        <div class="skill-chip">HTML & CSS</div>  
+        <div class="skill-chip purple">JavaScript</div>  
+        <div class="skill-chip blue">Python & Flask</div>  
+        <p class="card-footer">Small steps today. Bigger opportunities tomorrow.</p>  
+    </div>  
+</main>  
+
+<section class="features" id="features">  
+    <p class="tagline">HOW SKILLTRACK HELPS</p>  
+    <h2>Your career, one step at a time.</h2>  
+
+    <div class="feature-grid">  
+        <article class="feature">  
+            <span>◎</span>  
+            <h3>Choose Your Goal</h3>  
+            <p>Select your dream job role and discover its required skills.</p>  
+        </article>  
+        <article class="feature">  
+            <span>⌁</span>  
+            <h3>Find Skill Gaps</h3>  
+            <p>Compare your current skills with the skills your role requires.</p>  
+        </article>  
+        <article class="feature">  
+            <span>↗</span>  
+            <h3>Follow Your Roadmap</h3>  
+            <p>Get a prioritized learning plan and track your progress.</p>  
+        </article>  
+    </div>  
+</section>  
+
+<section class="career-section" id="career">  
+    <p class="tagline">START YOUR JOURNEY</p>  
+    <h2>What do you want to become?</h2>  
+    <p>Choose a direction. SkillTrack will help you plan your next steps.</p>  
+
+    <div class="career-grid">  
+        <div class="career-card">💻 Software Developer</div>  
+        <div class="career-card">🌐 Full-Stack Developer</div>  
+        <div class="career-card">📊 Data Analyst</div>  
+        <div class="career-card">🤖 AI / ML Developer</div>  
+    </div>  
+    <p class="coming-soon">Career selection will become interactive in a later step.</p>  
+</section>  
+
+<footer id="about">  
+    <a href="/" class="logo">✦ SkillTrack</a>  
+    <p>Plan your skills. Build your future.</p>  
+</footer>
+
+</body>  </html>
