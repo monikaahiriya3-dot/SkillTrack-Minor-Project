@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Skills | SkillTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">✦ SkillTrack</a>
+        <a href="/dashboard" class="secondary-btn">Dashboard</a>
+    </nav>
+
+    <main class="dashboard-welcome">
+        <p class="tagline">STEP 2 · SKILLS SELF-ASSESSMENT</p>
+        <h1>What skills do you already have?</h1>
+        <p>Career goal: {{ role.title }}</p>
+        <p>Select a status for each skill. Leave a skill unchecked if you haven't started learning it.</p>
+
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        <p class="notice">{{ message }}</p>
+        {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="skill-list">
+                {% for skill in skills %}
+                <div class="skill-row skill-choice">
+                    <div>
+                        <strong>{{ skill.skill_name }}</strong>
+                        <small>{{ skill.importance }}</small>
+                    </div>
+                    <div class="skill-status">
+                        <label>
+                            <input type="checkbox" name="known" value="{{ skill.id }}" {% if skill.status=='known'
+                                %}checked{% endif %}>
+                            Know
+                        </label>
+                        <label>
+                            <input type="checkbox" name="learning" value="{{ skill.id }}" {% if skill.status=='learning'
+                                %}checked{% endif %}>
+                            Learning
+                        </label>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="primary-btn full-btn">
+                Analyse My Skill Gaps →
+            </button>
+        </form>
+    </main>
+</body>
+
+</html>
